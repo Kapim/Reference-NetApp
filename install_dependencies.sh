@@ -7,9 +7,10 @@ pip install requests
 
 
 # CPU version
-pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
-pip install mmcv-full==1.5.2
-
+#pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
+#pip install mmcv-full==1.5.2
+pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
+pip install mmcv-full==1.5.2 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.11.0/index.html
 
 # Get mmDet and download model weights
 
