@@ -1,0 +1,21 @@
+FROM ros:noetic-ros-core
+
+SHELL ["/bin/bash", "-c"]
+
+RUN apt-get update \
+    && apt-get install -y python3-pip ros-noetic-ros-numpy
+
+RUN pip3 install celery redis
+
+RUN mkdir -p /root/dev_ws/src \
+    && source /opt/ros/noetic/setup.bash \
+    && cd /root/dev_ws/src \
+    && catkin_init_workspace \
+    && cd /root/dev_ws \
+    && catkin_make
+
+COPY src/era_5g_topic_rest_connector/ /root/dev_ws/
+
+COPY run.sh /root/run.sh
+
+CMD ["/bin/bash", "/root/run.sh"]
